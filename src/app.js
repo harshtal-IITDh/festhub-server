@@ -2,6 +2,8 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 
+import authRoutes from "./routes/auth.routes.js";
+
 const app = express();
 
 // Core middleware
@@ -22,8 +24,8 @@ app.get("/api/health", (req, res) => {
     .json({ status: "ok", message: "Harshtal backend is running" });
 });
 
-// Routes will be mounted here as we build them
-// e.g. app.use("/api/auth", authRoutes);
+// Mounted application routes
+app.use("/api/auth", authRoutes);
 
 // 404 handler
 app.use((req, res) => {

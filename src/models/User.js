@@ -2,6 +2,13 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
   {
+    userId: {
+      type: String,
+      unique: true,
+      sparse: true,
+      trim: true,
+      alias: "user_id",
+    },
     googleId: { type: String, required: true, unique: true },
     email: {
       type: String,

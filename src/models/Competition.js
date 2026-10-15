@@ -35,6 +35,12 @@ const competitionSchema = new mongoose.Schema(
     currentCompletedTeamCount: { type: Number, default: 0 },
     // Admin manual override for "Live Now"
     isLive: { type: Boolean, default: false },
+    // The two admin users in charge of this competition/event (Lead & Co-Lead IDs for cross-verification)
+    admins: {
+      type: [{ type: mongoose.Schema.Types.Mixed, ref: "User" }],
+      default: [],
+      alias: "adminUsers",
+    },
     isDeleted: { type: Boolean, default: false },
   },
   { timestamps: true }
